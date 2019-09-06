@@ -11,7 +11,7 @@ class Main:
     def __init__(self):
         threading.Thread.__init__(self)
 
-        self.pc = PC()
+        self.pc = PC(tcp_ip="192.168.1.1")
         self.android = Android()
         self.serial = Serial()
 

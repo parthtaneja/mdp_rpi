@@ -3,8 +3,8 @@ import os
 
 
 class PC():
-    def __init__(self):
-        self.tcp_ip = "192.168.1.1"
+    def __init__(self, tcp_ip):
+        self.tcp_ip = tcp_ip
         self.port = 5182
         self.connection = None
         self.client = None
