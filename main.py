@@ -36,6 +36,8 @@ class Main:
         print("[@] Reading from PC connection..")
         while True:
             msg = self.pc.read()
+            if msg == None:
+                return print("[#] nothing to read [read_from_pc]")
             initial = msg[0].lower()
             if initial == "b":
                 android_queue.put_nowait(msg[1:])
@@ -58,6 +60,8 @@ class Main:
     def read_from_android(self, pc_queue, serial_queue):
         while True:
             msg = self.android.read()
+            if msg == None:
+                return print("[#] nothing to read [read_from_android]")
             initial = msg[0].lower()
             if initial == "p":
                 pc_queue.put_nowait(msg[1:])
@@ -85,6 +89,8 @@ class Main:
     def read_from_serial(self, pc_queue, android_queue):
         while True:
             msg = self.serial.read()
+            if msg == None:
+                return print("[#] nothing to read [read_from_serial]")
             initial = msg[0].lower()
             if initial == "p":
                 pc_queue.put_nowait(msg[1:])
