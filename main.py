@@ -107,19 +107,16 @@ class Main:
         write_pc = threading.Thread(target=self.write_to_pc, args=(
             self.pc_queue,), name="pc_write_thread")
 
-        # Create read and write threads for Android
         read_android = threading.Thread(target=self.read_from_android, args=(
             self.pc_queue, self.serial_queue), name="android_read_thread")
-        write_android = threading.Thread(target=self.write_to_bt, args=(
+        write_android = threading.Thread(target=self.write_to_android, args=(
             self.android_queue,), name="android_write_thread")
 
-        # Create read and write threads for Arduino
         read_serial = threading.Thread(target=self.read_from_serial, args=(
             self.pc_queue, self.android_queue), name="serial_read_thread")
         write_serial = threading.Thread(target=self.write_to_serial, args=(
             self.serial_queue,), name="serial_write_thread")
 
-        # Set threads as Daemons
         read_pc.daemon = True
         write_pc.daemon = True
 
@@ -129,7 +126,6 @@ class Main:
         read_serial.daemon = True
         write_serial.daemon = True
 
-        # Start Threads
         read_pc.start()
         write_pc.start()
 
