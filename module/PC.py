@@ -26,24 +26,24 @@ class PC():
             self.connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             self.connection.bind((self.tcp_ip, self.port))
             self.connection.listen(1)
-            print ("[@] Listening for incoming connections from PC...")
+            print("[@] Listening for incoming connections from PC...")
             self.client, self.address = self.connection.accept()
-            print ("[@] Connected! Connection address: {}").format(self.address)
+            print("[@] Connected! Connection address: {}").format(self.address)
             self._is_pc_connected = True
         except Exception as e:
-            print ("[!] Error connecting to PC")
-            print (e)
-        
+            print("[!] Error connecting to PC")
+            print(e)
+
     def write(self, msg):
         try:
             self.client.sendto(msg, self.address)
         except Exception as e:
-            print ("[!] Error writing message")
-            print (e)
+            print("[!] Error writing message")
+            print(e)
 
     def read(self):
         try:
             return self.client.recv(2048)
         except Exception as e:
-            print ("[!] Error reading message")
-            print (e) 
+            print("[!] Error reading message")
+            print(e)
