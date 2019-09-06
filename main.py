@@ -37,10 +37,10 @@ class Main:
         while True:
             msg = self.pc.read()
             initial = msg[0].lower()
-            if initial == "a":
+            if initial == "b":
                 android_queue.put_nowait(msg[1:])
                 print("[@] Received from PC to Android: {}").format(msg)
-            elif initial == "h":
+            elif initial == "a":
                 serial_queue.put_nowait(msg[1:])
                 print("[@] Received from PC to Serial: {}").format(msg)
             else:
