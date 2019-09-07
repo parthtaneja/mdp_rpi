@@ -28,7 +28,7 @@ class PC():
             self.connection.listen(1)
             print("[@] Listening for incoming connections from PC...")
             self.client, self.address = self.connection.accept()
-            print("[@] Connected! Connection address: {}").format(self.address)
+            print("[@] Connected! Connection address: {}".format(self.address))
             self._is_pc_connected = True
         except Exception as e:
             print("[!] Error connecting to PC")

@@ -27,15 +27,16 @@ class Android:
             self.server_socket.bind(("", bluetooth_port))
             self.server_socket.listen(1)
             self.port = self.server_socket.getsockname()[1]
+            uuid = "00001101-0000-1000-8000-00805F9B34FB"
             advertise_service(
                 self.server_socket,
                 "MDP22",
-                service_id="00001101-0000-1000-8000-00805F9B34FB", service_classes=[uuid, SERIAL_PORT_CLASS],
+                service_id=uuid,
+                service_classes=[uuid, SERIAL_PORT_CLASS],
                 profiles=[SERIAL_PORT_PROFILE],)
-            print("Waiting for connection on RFCOMM channel on port {}").format(
-                self.port)
+            print("Waiting for connection on RFCOMM channel on port {}".format(self.port))
             self.client_socket, client_address = self.server_socket.accept()
-            print("[@] Accepted connection from {}").format(client_address)
+            print("[@] Accepted connection from {}".format(client_address))
             self._is_connected = True
         except Exception as e:
             print(e)

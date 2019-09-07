@@ -30,7 +30,7 @@ class Main:
             if not pc_queue.empty():
                 msg = pc_queue.get_nowait()
                 self.pc.write(msg)
-                print("[@] Sent to PC: {}").format(msg)
+                print("[@] Sent to PC: {}".format(msg))
 
     def read_from_pc(self, android_queue, serial_queue):
         print("[@] Reading from PC connection..")
@@ -41,12 +41,12 @@ class Main:
             initial = msg[0].lower()
             if initial == "b":
                 android_queue.put_nowait(msg[1:])
-                print("[@] Received from PC to Android: {}").format(msg)
+                print("[@] Received from PC to Android: {}".format(msg))
             elif initial == "a":
                 serial_queue.put_nowait(msg[1:])
-                print("[@] Received from PC to Serial: {}").format(msg)
+                print("[@] Received from PC to Serial: {}".format(msg))
             else:
-                print("[!] Incorrect header received from PC: {}").format(initial)
+                print("[!] Incorrect header received from PC: {}".format(initial))
                 time.sleep(1)
 
     def write_to_android(self, android_queue):
@@ -55,7 +55,7 @@ class Main:
             if not android_queue.empty():
                 msg = android_queue.get_nowait()
                 self.android.write(msg)
-                print("[@] Sent to Android: {}").format(msg)
+                print("[@] Sent to Android: {}".format(msg))
 
     def read_from_android(self, pc_queue, serial_queue):
         while True:
@@ -65,17 +65,17 @@ class Main:
             initial = msg[0].lower()
             if initial == "p":
                 pc_queue.put_nowait(msg[1:])
-                print("[@] Received from Android to PC: {}").format(msg)
+                print("[@] Received from Android to PC: {}".format(msg))
             elif initial == "a":
                 serial_queue.put_nowait(msg[1:])
-                print("[@] Received from Android to Arduino: {}").format(msg)
+                print("[@] Received from Android to Arduino: {}".format(msg))
             elif initial == "x":
                 serial_queue.put_nowait(msg[1:])
                 pc_queue.put_nowait(msg[1:])
-                print("[@] Received from Android to Arduino & PC: {}").format(msg)
+                print("[@] Received from Android to Arduino & PC: {}".format(msg))
             else:
-                print("[!] Incorrect header received from Android: {}").format(
-                    initial)
+                print(
+                    "[!] Incorrect header received from Android: {}".format(initial))
                 time.sleep(1)
 
     def write_to_serial(self, serial_queue):
@@ -84,7 +84,7 @@ class Main:
             if not serial_queue.empty():
                 msg = serial_queue.get_nowait()
                 self.serial.write(msg)
-                print("[@] Sent to Serial: {}").format(msg)
+                print("[@] Sent to Serial: {}".format(msg))
 
     def read_from_serial(self, pc_queue, android_queue):
         while True:
@@ -94,13 +94,13 @@ class Main:
             initial = msg[0].lower()
             if initial == "p":
                 pc_queue.put_nowait(msg[1:])
-                print("[@] Received from Arduino to PC: {}").format(msg)
+                print("[@] Received from Arduino to PC: {}".format(msg))
             elif initial == "b":
                 android_queue.put_nowait(msg[1:])
-                print("[@] Received from Arduino to Android: {}").format(msg)
+                print("[@] Received from Arduino to Android: {}".format(msg))
             else:
-                print("[!] Incorrect header received from Android: {}").format(
-                    initial)
+                print(
+                    "[!] Incorrect header received from Android: {}".format(initial))
                 time.sleep(1)
 
     def keep_alive(self):
