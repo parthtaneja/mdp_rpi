@@ -53,4 +53,4 @@ class Android:
             return self.client_socket.recv(2048)
         except Exception as e:
             print("[!] Error reading message from BT device. Reconnecting..")
-            self.connect_bluetooth()
+            self.connect()
