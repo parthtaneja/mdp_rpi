@@ -5,7 +5,7 @@ if __name__ == "__main__":
     android.connect()
     print("[@] Bluetooth connection successfully established")
     try:
-        msg = raw_input()
+        msg = input("Enter msg to send: ")
         print("[@] Writing to Bluetooth: {}".format(msg))
         android.write(msg)
         msg = android.read()
