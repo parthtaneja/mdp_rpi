@@ -11,10 +11,10 @@ class Android:
 
     def close(self):
         if self.client_socket != None:
-            print("[!] Android: closing bluetooth socket")
+            print("[@] Android: closing bluetooth socket")
             self.client_socket.close()
         if self.server_socket != None:
-            print("[!] Android: closing server socket")
+            print("[@] Android: closing server socket")
             self.server_socket.close()
         self._is_connected = False
 

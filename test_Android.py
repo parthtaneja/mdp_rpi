@@ -10,7 +10,7 @@ if __name__ == "__main__":
         android.write(msg)
         msg = android.read()
         print("[@] Got from Bluetooth: {}".format(msg))
-        print("Closing socket.")
+        print("[@] Closing socket.")
         android.close()
     except Exception as e:
         print(e)
