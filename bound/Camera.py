@@ -72,6 +72,7 @@ for c in cnts:
 
     # if our approximated contour has four points, then
     # we can assume that we have found our screen
+    print ("Found {} contours".format(approx))
     if len(approx) == 7:
         screenCnt = approx
         break
