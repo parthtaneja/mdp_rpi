@@ -4,6 +4,7 @@ import numpy as np
 import argparse
 import cv2
 import matplotlib.pyplot as plt
+import sys
 
 from picamera import PiCamera
 from picamera.array import PiRGBArray
@@ -76,6 +77,9 @@ for c in cnts:
         break
 
 # Get exact arrow contours
+if screenCnt is None:
+    print("Unable to find anything.")
+    sys.exit(1)
 cv2.drawContours(image, [screenCnt], -1, (0, 255, 0), 2)
 #cv2.imshow("ARROW", image)
 # cv2.waitKey(0)
