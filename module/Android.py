@@ -3,10 +3,11 @@ import os
 
 
 class Android:
-    def __init__(self):
+    def __init__(self, bluetooth_channel = 3):
         self.server_socket = None
         self.client_socket = None
         self._is_connected = False
+        self.bluetooth_channel = bluetooth_channel
 
     def close(self):
         if self.client_socket != None:
@@ -21,10 +22,9 @@ class Android:
         return self._is_connected
 
     def connect(self):
-        bluetooth_port = 4
         try:
             self.server_socket = BluetoothSocket(RFCOMM)
-            self.server_socket.bind(("", bluetooth_port))
+            self.server_socket.bind(("", self.bluetooth_channel))
             self.server_socket.listen(1)
             self.port = self.server_socket.getsockname()[1]
             uuid = "00001101-0000-1000-8000-00805F9B34FB"

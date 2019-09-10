@@ -1,7 +1,7 @@
-from ..module.Android import *
+from module.Android import *
 
 if __name__ == "__main__":
-    android = Android()
+    android = Android(bluetooth_channel = 3)
     android.connect()
     print("[@] Bluetooth connection successfully established")
     try:
@@ -11,6 +11,6 @@ if __name__ == "__main__":
         msg = android.read()
         print("[@] Got from Bluetooth: {}".format(msg))
         print("Closing socket.")
-        andorid.close()
+        android.close()
     except Exception as e:
         print(e)
