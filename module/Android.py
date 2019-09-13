@@ -1,13 +1,21 @@
 from bluetooth import *
 import os
+import subprocess
 
 
 class Android:
-    def __init__(self, bluetooth_channel = 3):
+    def __init__(self, bluetooth_channel=3):
         self.server_socket = None
         self.client_socket = None
         self._is_connected = False
         self.bluetooth_channel = bluetooth_channel
+        try:
+            print("[@] Turning on bluetooth programmatically..")
+            subprocess.check_output(["sudo", "hciconfig", "hci0", "piscan"])
+            time.sleep(3)
+        except Exception as e:
+            print(
+                "[!] Error turning on bluetooth. Please `sudo hciconfig hci0 piscan` manually")
 
     def close(self):
         if self.client_socket != None:
