@@ -11,6 +11,6 @@ if __name__ == '__main__':
         msg = serial.read()
         print("[@] Got from Arduino: {}".format(msg))
         print("[@] Closing socket.")
-        serial.close()
+        # serial.close()
     except Exception as e:
         print(e)
