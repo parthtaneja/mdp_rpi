@@ -10,7 +10,9 @@ class Serial:
 
     def connect(self):
         try:
+            print ("[@] Connecting to Serial..")
             self.serial = serial.Serial(self.port, self.baud_rate)
+            time.sleep(3)
             print("[@] Serial link is connected")
         except Exception as e:
             print("[!] Unable to connect serial link.")
